@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Biodata;
 
 class BiodataController extends Controller
 {
@@ -13,6 +14,12 @@ class BiodataController extends Controller
      */
     public function index()
     {
+        $data=[
+            'title'=>'List Siswa',
+            'siswas'=>Biodata::orderBy('created_at','desc')->get(),
+            //*'route' =>('biodata.create),
+        ];
+        return view('list_siswa',$data);
         //
     }
 

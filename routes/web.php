@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\controllers\BiodataController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +34,5 @@ Route::get('/biodata', function () {
     ];
      return view('/biodata', $data);
 });
+
+Route::get('/list',[BiodataController::class,'index']);
