@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/bio">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Blog</a>
@@ -87,15 +87,21 @@
                             <td>{{$siswa->alamat}}</td>
                             <td>{{$siswa->telp}}</td>
                             <td>{{$siswa->email}}</td>
-                            <td>
-                                <button type="button"= class="btn btn-warning">Edit</button>
-                                <button type="button"= class="btn btn-danger">Delete</button>
-                                <button type="button"= class="btn btn-primary">Lihat</button>
+                            <td><form method="POST" action="{{ route('destroy-siswa',$siswa->id) }}">
+                          
+                            <a button type="button" class="btn btn-warning" href="{{ route('edit_siswa',$siswa->id) }}">Edit</button></a>
+                            <a button type="button" class="btn btn-primary" href="{{ route('show-bio',$siswa->id) }}">Lihat</button></a>
+                            @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                              
+                              
                             </td>
                         </tr>
                     @endforeach
                     </body>
                 </table>
+                <a href="{{ route('add-siswa') }}">
                 <button type="button" class="btn btn-primary">Add New</button>
             </div>
             <div>

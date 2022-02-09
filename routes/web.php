@@ -22,17 +22,31 @@ Route::get('/home',[Homecontroller::class,'showgreating']);
 
 Route::get('/biodata', function () {
     $data=[
-        'nama'=> 'MUhammad Rifqi',
-        'lahir'=> 'Bandung, 6 februari 2004',
-        'hobi' => 'tidur',
+        'nama'=> 'Muhammad Rifqi',
+        'lahir'=> 'Ci anjur,06-02-2004',
+        'hobi' => 'Tidur',
         'jk' => 'Laki - Laki',
-        'agama' => 'islam',
-        'alamat' => 'jl dahlia no 25 ',
-        'telp' => '08952554096',
-        'email' => 'rm16123@gmail.com ',
-        'photo' => '../img/yyy.jpg'
+        'agama' => 'ISLAM',
+        'alamat' => 'Rancaekek',
+        'telp' => '08XXXXXXXXX',
+        'email' => 'rm65416111@gmail.com ',
+        'photo' => 'img/yyy.jpg'
     ];
      return view('/biodata', $data);
 });
 
-Route::get('/list',[BiodataController::class,'index']);
+Route::get('/list',[BiodataController::class,'index'])->name('list');
+Route::get('/edit/{id}', [BiodataController::class, 'edit'])->name('edit_siswa');
+Route::get('/add_siswa', [BiodataController::class, 'create'])->name('add-siswa');
+Route::post('/store_siswa',[BiodataController::class, 'store'])->name('store_siswa');
+Route::put('/update/{id}', [BiodataController::class, 'update'])->name('update_siswa');
+Route::get('/bio/{id}', [BiodataController::class, 'show'])->name('show-bio');
+Route::delete('/delete/{id}', [BiodataController::class, 'destroy'])->name('destroy-siswa'); 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
